@@ -42,17 +42,20 @@ class MainActivity : AppCompatActivity() {
 
         val constellationcardview = findViewById<CardView>(R.id.constellation_card)
         constellationcardview.setOnClickListener {
-            val intent = Intent(this@MainActivity, ResultActivity::class.java)
-            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
-            startActivity(intent)
+            constellationcardview.setOnClickListener {
+                startActivity(Intent(this,ConstellationActivity::class.java))
+            }
         }
         val namecardview = findViewById<CardView>(R.id.name_card)
         namecardview.setOnClickListener {
-            startActivity(Intent(this@MainActivity,NameActivity::class.java))
+            startActivity(Intent(this,NameActivity::class.java))
         }
         val randomcardview = findViewById<CardView>(R.id.random_card)
         randomcardview.setOnClickListener {
-            startActivity(Intent(this@MainActivity,ResultActivity::class.java))
+
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
+            startActivity(intent)
         }
 
 
